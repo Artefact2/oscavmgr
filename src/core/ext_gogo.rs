@@ -100,17 +100,17 @@ impl ExtGogo {
     }
 
     pub fn step(&mut self, parameters: &AvatarParameters, bundle: &mut OscBundle) {
-        if let Some(OscType::Int(tracking)) = parameters.get(TRACKING_TYPE) {
-            let want_loco = if 5 < *tracking {
-                OscType::Bool(true)
-            } else {
-                OscType::Bool(false)
-            };
+        // if let Some(OscType::Int(tracking)) = parameters.get(TRACKING_TYPE) {
+        //     let want_loco = if 5 < *tracking {
+        //         OscType::Bool(true)
+        //     } else {
+        //         OscType::Bool(false)
+        //     };
 
-            if parameters.get(LOCO_PARAM) != Some(&want_loco) {
-                bundle.send_parameter(LOCO_PARAM, want_loco);
-            }
-        }
+        //     if parameters.get(LOCO_PARAM) != Some(&want_loco) {
+        //         bundle.send_parameter(LOCO_PARAM, want_loco);
+        //     }
+        // }
 
         if let Some(staging) = self.staging.take() {
             let elapsed = staging.time.elapsed().as_secs();
